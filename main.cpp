@@ -112,49 +112,45 @@ int main()
         cout << "Enter your choice: ";
         cin >> choice;
 
-        // Option 1: Sign Up
         if (choice == 1)
-        {
-            cout << "Enter Username: ";
-            cin >> username;
+{
+    cout << "Enter Username: ";
+    cin.ignore();
+    getline(cin, username);
 
-            cout << "Enter Password: ";
-            cin >> password;
+    cout << "Enter Password: ";
+    cin >> password;
 
-            // Create a new User object with entered details
-            User newUser(username, password);
+    User newUser(username, password);
+    auth.signup(newUser);
 
-            // Save the new user using the signup function
-            auth.signup(newUser);
+    cout << "Sign Up Successfully!" << endl;
+}
 
-            cout << "Sign Up Successfully!" << endl;
-        }
-
-        // Option 2: Login
         else if (choice == 2)
-        {
-            cout << "Enter Username: ";
-            cin >> username;
+{
+    cout << "Enter Username: ";
+    cin.ignore();
+    getline(cin, username);
 
-            cout << "Enter Password: ";
-            cin >> password;
+    cout << "Enter Password: ";
+    cin >> password;
 
-            // Check whether the entered details match a saved account
-            if (auth.login(username, password))
-            {
-                cout << "Logged in Successfully! Welcome, "
-                     << username << endl;
-            }
-            else
-            {
-                cout << "Invalid username or password." << endl;
-            }
-        }
+    if (auth.login(username, password))
+    {
+        cout << "Logged in Successfully! Welcome, "
+             << username << endl;
+    }
+    else
+    {
+        cout << "Login Failed! Invalid username or password." << endl;
+    }
+}
 
         // Option 3: Exit
         else if (choice == 3)
         {
-            cout << "Exiting Authentication System." << endl;
+            cout << "Exiting Authentication System. Thank you" << endl;
             break;
         }
 
